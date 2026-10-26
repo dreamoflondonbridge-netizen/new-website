@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "classes": [
     "1반",
     "2반",
@@ -429,35 +429,35 @@
   "boss_dialogue": "조회수만 잘 나오면 되는 거 아니야? 사진도 통계도 대충 넣으면 되지!",
   "finals": [],
   "settings": {
-    "base_views": 30000,
+    "base_views": 10000,
     "multipliers": [
       {
         "value": 1,
-        "weight": 60
+        "weight": 50
       },
       {
         "value": 2,
-        "weight": 30
+        "weight": 25
       },
       {
         "value": 5,
-        "weight": 10
+        "weight": 25
       }
     ],
     "roulette": [
       {
         "type": "views",
-        "value": 10000,
+        "value": 2000,
         "weight": 30
       },
       {
         "type": "views",
-        "value": 30000,
+        "value": 5000,
         "weight": 25
       },
       {
         "type": "views",
-        "value": 50000,
+        "value": 8000,
         "weight": 20
       },
       {
@@ -472,7 +472,7 @@
       },
       {
         "type": "views",
-        "value": 200000,
+        "value": 50000,
         "weight": 3
       }
     ],
