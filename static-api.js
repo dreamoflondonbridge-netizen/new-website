@@ -36,7 +36,7 @@ window.staticApi=async function(path,body){
   if(path==='register'){
     if(!db.content.settings.open)profileError('게임 시작이 닫혀 있습니다.');
     const cls=String(body.class_name),num=Number(body.student_no),nickname=String(body.nickname||'').trim().slice(0,20);
-    if(!db.content.classes.includes(cls)||num<1||num>35||!nickname)profileError('반, 번호, 닉네임을 확인하세요.');
+    if(!db.content.classes.includes(cls)||num<1||num>37||!nickname)profileError('반, 번호, 닉네임을 확인하세요.');
     if(db.students.some(x=>x.class_name===cls&&x.student_no===num))profileError('이 브라우저에 해당 번호의 기록이 있습니다. 이어서 접속을 선택하세요.');
     const code=`${makeId().replaceAll('-','').slice(0,8)}-${makeId().replaceAll('-','').slice(0,8)}`.toUpperCase();
     const student={id:makeId(),class_name:cls,student_no:num,nickname,recovery_code:code,state:newState()};db.students.push(student);localStorage.setItem(SESSION_KEY,student.id);save();return {recovery_code:code,game:gameView(student)};
