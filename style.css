@@ -28,3 +28,42 @@ body{font-size:15px;line-height:1.4}.brand-icon{font-size:36px}.brand strong{fon
 @media(max-width:560px){.game-home-head{padding:0 1px 5px}.game-home-head strong{font-size:15px}.game-home-head>div:first-child{gap:5px}.game-home-head .pill{font-size:9px;padding:3px 6px}.head-tools{gap:4px}.mission-badge{font-size:10px;padding:5px 7px}.record-mini{font-size:10px;padding:5px 7px}.office-stage{border-radius:10px}.office-stage .office.has-photo .sign{font-size:10px;padding:4px 6px;top:5%;right:4%}.office-hud{grid-template-columns:minmax(0,1fr) minmax(100px,.9fr);gap:8px;padding:7px 9px 8px}.hud-views small{font-size:9px}.hud-views b{font-size:24px}.hud-level{font-size:9px}.inspect-hint{font-size:9px;top:5px;right:5px}.game-actions{padding-top:6px}.game-actions .action-pair .btn{min-height:48px;padding:6px 3px;font-size:12px}.game-actions .action-pair .btn small{font-size:8px}.game-actions #next{min-height:46px}.office-inspect-modal .office{aspect-ratio:1.4}.growth-celebration .office{aspect-ratio:1.4}.growth-celebration{padding:9px}.growth-celebration h2{font-size:18px!important}}
 @media(prefers-reduced-motion:reduce){.office-stage .office.has-photo::after,.growth-celebration,.growth-flash{animation:none!important}}
 .inspect-hint{left:9px;right:auto;top:8px;width:max-content}.teacher-compact{display:block;width:max-content;margin:8px auto;color:#777d94;font-size:10px;text-decoration:none;padding:3px 8px}.teacher-compact:hover{text-decoration:underline}
+
+/* Tablet layout: comfortable reading and touch targets in portrait and landscape. */
+@media (min-width:561px) and (max-width:1280px){
+ #app{max-width:980px;padding:14px 22px 30px}
+ .topbar{padding:8px 8px 12px}.brand-icon{font-size:38px}.brand strong{font-size:26px}
+ body{font-size:16px;line-height:1.45}
+ .panel{padding:22px;border-radius:22px;margin-bottom:14px}
+ h1{font-size:clamp(32px,4.4vw,46px)!important}h2{font-size:27px!important}h3{font-size:21px!important}
+ .btn{min-height:48px;padding:12px 18px;font-size:16px}.btn.full{font-size:18px}
+ .game-home{max-width:920px;margin-bottom:14px}.game-home-head{padding:4px 4px 9px}.game-home-head strong{font-size:21px}.game-home-head .pill{font-size:13px;padding:5px 10px}.mission-badge{font-size:14px;padding:8px 12px}.record-mini{font-size:14px;padding:8px 12px}
+ .office-stage{border-radius:18px}.office-hud{padding:14px 18px;grid-template-columns:1fr .8fr;gap:20px}.hud-views small{font-size:13px}.hud-views b{font-size:clamp(30px,4vw,44px)}.hud-level{font-size:13px}.hud-level .progress{height:9px}.inspect-hint{font-size:12px;left:12px;top:12px;padding:6px 10px}
+ .game-actions{padding-top:12px}.game-actions .action-pair{gap:12px;margin-bottom:9px}.game-actions .action-pair .btn{min-height:64px;padding:10px 14px;font-size:17px;border-radius:15px}.game-actions .action-pair .btn small{font-size:12px}.game-actions #next{min-height:60px}.help-mini{font-size:13px;padding:6px 12px}
+ .mission-card{padding:22px;margin:16px 0;border-radius:18px}.mission-card h2{font-size:26px!important;line-height:1.35}
+ .choice{min-height:58px;padding:15px 17px;font-size:17px;gap:14px;border-radius:15px;margin:8px 0}.choice .letter{padding:7px 12px}
+ .media-grid{gap:14px}.media{padding:13px;border-radius:17px}.media-art{height:clamp(140px,19vw,205px);border-radius:12px;font-size:58px}.media h4{font-size:17px;line-height:1.4}.media small{font-size:12px}.media .tiny{font-size:12px}
+ .overlay{padding:24px}.overlay-card{width:min(100%,760px);max-height:92vh;padding:30px;border-radius:26px}.wheel-wrap{width:min(48vw,360px)}
+ .office-inspect-modal .office,.growth-celebration .office{aspect-ratio:1.672}
+ .stats{gap:12px}.stat-card{padding:14px}.stat-card b{font-size:26px}.progress{height:14px}
+ .tabs{gap:8px}.tabs .btn{font-size:15px;padding:10px 14px}.admin-form{padding:18px;margin:16px 0}.admin-form .field{font-size:15px}.admin-form input,.admin-form select,.admin-form textarea{font-size:16px;padding:12px}
+ table{font-size:15px}th,td{padding:11px 12px}
+ .teacher-compact{font-size:12px;padding:6px 10px}
+}
+@media (min-width:820px) and (max-width:1280px){
+ #app{max-width:1040px;padding-inline:28px}
+ .media-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:900px;margin-inline:auto}
+ .game-home{max-width:960px}
+}
+@media (min-width:561px) and (max-width:819px){
+ #app{max-width:760px;padding-inline:18px}
+ .game-home{max-width:720px}
+ .media-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .office-stage .office.has-photo .sign{font-size:15px;padding:6px 9px}
+}
+@media (min-width:700px) and (max-height:700px){
+ .topbar{padding-top:3px;padding-bottom:6px}.brand-icon{font-size:30px}.brand strong{font-size:22px}
+ #app{padding-top:8px;padding-bottom:18px}
+ .office-hud{padding:8px 14px}.game-actions{padding-top:7px}.game-actions .action-pair .btn{min-height:54px}
+ .panel{padding:16px;margin-bottom:10px}.mission-card{padding:14px;margin:10px 0}
+}
