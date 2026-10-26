@@ -23,7 +23,7 @@ function question(content,key){const [kind,index,part]=key.split(':');if(kind===
 function score(key){if(key.startsWith('article:')||key.startsWith('quiz:'))return 5;return [8,8,9][+key.split(':')[1]]}
 function publicContent(content){const out=structuredClone(content);for(const a of out.articles)for(const k of ['select','effect'])for(const f of ['answer','explanation','hint'])delete a[k][f];for(const q of [...out.quizzes,...out.boss])for(const f of ['answer','explanation','hint'])delete q[f];return out}
 function currentStudent(){const id=localStorage.getItem(SESSION_KEY);return memoryDb.students.find(x=>x.id===id)||null}
-function gameView(student){const s=student.state,c=memoryDb.content;return {profile:{class_name:student.class_name,student_no:student.student_no,nickname:student.nickname},state:s,next:currentKey(s),content:publicContent(c),level:level(s.views,c.settings),finals:[]}}
+function gameView(student){const s=student.state,c=memoryDb.content;return {profile:{class_name:student.class_name,student_no:student.student_no,nickname:student.nickname},state:s,next:currentKey(s),content:publicContent(c),level:level(s.views,c.settings),finals:[],history:student.history||[]}}
 function profileError(text){throw Error(text)}
 
 window.staticApi=async function(path,body){
@@ -50,7 +50,9 @@ window.staticApi=async function(path,body){
   if(!db.content.settings.open)profileError('교사가 게임을 종료했습니다.');
   const rid=String(body?.request_id||'');if(rid&&db.requests[student.id]?.[rid])return db.requests[student.id][rid];
   const s=student.state,c=db.content,settings=c.settings,before=level(s.views,settings);let result;
-  if(path==='answer'){
+  if(path==='restart'){
+    if(!s.completed)profileError('한 판을 완료한 뒤 새로 시작할 수 있습니다.');student.history||=[];student.history.push({run:student.history.length+1,views:s.views,score:s.score,completed_at:new Date().toISOString(),article:s.article});student.state=newState();result={ok:true,game:gameView(student)};
+  }else if(path==='answer'){
     const key=currentKey(s),choice=Number(body.choice);if(key!==body.key||['publish','spin','complete'].includes(key))profileError('현재 풀 수 있는 문제가 아닙니다.');
     if(!Number.isInteger(choice)||choice<0||choice>3)profileError('선택지를 확인하세요.');const q=question(c,key),entry=s.attempts[key]||={count:0,wrong:0,first_correct:null,complete:false,first_correct_at:null,completed_at:null,choices:[]};
     entry.count++;entry.choices.push(choice);const correct=choice===q.answer;if(entry.count===1){entry.first_correct=correct;if(correct){s.score+=score(key);entry.first_correct_at=new Date().toISOString()}}
