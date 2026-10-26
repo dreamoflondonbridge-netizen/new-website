@@ -2,9 +2,25 @@
 
 중학교 2학년 국어 수업용 모바일 웹게임입니다. 학생은 자료의 적합성과 효과를 판단하여 기사 6개를 발행하고, 퀴즈·룰렛·보스전을 진행합니다. 조회수는 신문사를 자동 성장시키며 학습 점수와 별도로 저장됩니다.
 
-## 실행
+## 학생들이 링크로 접속하도록 인터넷에 올리기
 
-Python 3.10 이상이 필요합니다. 외부 패키지나 빌드 단계는 없습니다.
+선생님 Windows PC에는 Python이나 Node를 설치할 필요가 없습니다. 무료 Cloudflare 계정에서 `workers.dev` 주소를 활성화하고, 이 GitHub 저장소의 **Actions → Deploy classroom game → Run workflow**를 실행하면 됩니다. GitHub Actions가 서버와 데이터베이스를 배포합니다.
+
+처음 한 번만 다음 세 값을 저장소의 **Settings → Secrets and variables → Actions → New repository secret**에 등록해야 합니다. 값을 README, 코드, 채팅에 적지 마세요.
+
+| Secret 이름 | 넣을 값 |
+|---|---|
+| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare 대시보드에 표시되는 Account ID |
+| `CLOUDFLARE_API_TOKEN` | Cloudflare에서 만든 사용자 API 토큰. 대상 계정에 **Workers Scripts: Edit**, **D1: Edit** 권한 필요 |
+| `ADMIN_PASSWORD` | 교사 화면에 사용할 강한 암호 |
+
+배포 작업은 `npm test`를 먼저 실행하고, 계정에 게임용 D1 데이터베이스가 없으면 만들고, 게임을 배포한 다음 교사 암호를 서버 비밀 값으로 저장합니다. 작업 결과의 **Summary** 또는 배포 로그에 표시된 HTTPS `workers.dev` 주소를 학생용 QR코드로 만들면 됩니다. 같은 작업을 다시 실행해도 기존 D1 데이터베이스와 학생 기록은 유지됩니다.
+
+Cloudflare 계정 설정과 GitHub Secrets 등록은 계정 소유자가 직접 해야 합니다. 현재 저장소 코드만으로 공개 주소가 자동 생성되지는 않습니다.
+
+## 로컬 개발 실행 (선택)
+
+교사 PC에서 실행할 필요는 없습니다. 개발자가 로컬에서 실행할 때는 Python 3.10 이상 또는 Node.js 20 이상을 사용할 수 있습니다.
 
 ```bash
 cd /workspace/new-website
@@ -14,6 +30,8 @@ python3 server.py
 ```
 
 로컬 브라우저에서 `http://127.0.0.1:8766/`을 엽니다. 기본 바인딩은 `127.0.0.1`입니다. 다른 기기의 접속을 받는 서버에서는 `GAME_HOST=0.0.0.0`을 설정하고 **HTTPS 역방향 프록시** 뒤에서 실행하세요. 학생에게는 프록시의 HTTPS 주소를 QR코드로 배포합니다. 정적 호스팅인 GitHub Pages만으로는 학생 기록과 관리자 인증을 운영할 수 없습니다.
+
+온라인 배포와 같은 Cloudflare Worker를 로컬에서 확인하려면 개발자가 `npm ci` 후 `npm run dev`를 실행하고 `http://127.0.0.1:8787/`을 엽니다. 이때 교사 로그인 시험에는 Wrangler의 `ADMIN_PASSWORD` 로컬 변수가 필요합니다.
 
 `ADMIN_PASSWORD`를 설정하지 않으면 교사 로그인이 비활성화됩니다. 암호는 저장소에 쓰거나 커밋하지 마세요. SQLite 데이터는 기본적으로 `data/game.sqlite3`에 저장되며 `data/`는 Git에서 제외됩니다. 영속 디스크를 제공하는 서버에서 운영하고 이 디렉터리를 정기적으로 백업하세요. 경로는 `GAME_DATA_DIR`, 포트는 `PORT`로 바꿀 수 있습니다. 앱은 한 프로세스로 실행하는 구성을 기준으로 합니다.
 
@@ -31,10 +49,12 @@ python3 server.py
 cd /workspace/new-website
 python3 -m unittest discover -s tests -v
 node --check app.js
+npm ci
+npm test
 ```
 
-테스트는 임시 SQLite DB와 별도 서버를 사용합니다. 35명 동시 등록과 답변, 6기사 완주, 18문항 첫 시도 채점, 보상·룰렛 중복 요청, 복구 코드, 교사 권한, 문제 버전과 결승 기록을 확인합니다.
+테스트는 임시 데이터베이스와 별도 서버를 사용합니다. 35명 동시 등록과 답변, 6기사 완주, 18문항 첫 시도 채점, 보상·룰렛 중복 요청, 복구 코드, 교사 권한, 문제 버전과 결승 기록을 확인합니다. `npm test`는 실제 온라인 배포용 Worker 코드를 검사합니다.
 
 ## 운영 주의
 
-학생 번호와 복구 코드는 개인정보에 준해 다루세요. 실제 수업 전에 HTTPS, 영속 스토리지, 관리자 암호와 백업 정책을 준비해야 합니다. 외부 호스팅과 공개 QR 주소는 이 저장소만으로 자동 생성되지 않습니다.
+학생 번호와 복구 코드는 개인정보에 준해 다루세요. 실제 수업 전에 관리자 암호와 데이터베이스 백업 정책을 준비해야 합니다. Cloudflare D1은 배포를 다시 해도 유지되지만, 운영 중 데이터베이스를 삭제하면 학생 기록이 사라집니다. 첫 배포 뒤 교사 화면의 샘플 문제를 수업 자료로 교체하세요.
