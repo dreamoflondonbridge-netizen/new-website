@@ -1,0 +1,56 @@
+const DB_KEY='newsroom-static-v1';
+const SESSION_KEY='newsroom-session-v1';
+let memoryDb;
+
+async function loadDb(){
+  if(memoryDb)return memoryDb;
+  try{memoryDb=JSON.parse(localStorage.getItem(DB_KEY)||'null')}catch{}
+  if(!memoryDb){const response=await fetch(new URL('./seed.json',location.href));if(!response.ok)throw Error('게임 자료를 불러오지 못했습니다.');memoryDb={content:await response.json(),students:[],requests:{}};save()}
+  return memoryDb;
+}
+function save(){localStorage.setItem(DB_KEY,JSON.stringify(memoryDb))}
+function makeId(){return crypto.randomUUID?crypto.randomUUID():`${Date.now()}-${Math.random()}`}
+function newState(){return {article:0,views:0,score:0,solved:[],attempts:{},published:[],roulette:{},pending_multiplier:1,boss_stage:0,completed:false,events:[]}}
+function level(views,settings){let n=1;settings.thresholds.forEach((t,i)=>{if(views>=t)n=i+1});return n}
+function currentKey(s){const n=s.article;if([2,4,6].includes(n)&&!s.solved.includes(`quiz:${n}`))return `quiz:${n}`;if([2,4,6].includes(n)&&!Object.hasOwn(s.roulette,String(n)))return 'spin';if(n<6){if(!s.solved.includes(`article:${n}:select`))return `article:${n}:select`;if(!s.solved.includes(`article:${n}:effect`))return `article:${n}:effect`;return 'publish'}return s.boss_stage<3?`boss:${s.boss_stage}`:'complete'}
+function choose(items){let target=Math.random()*items.reduce((sum,x)=>sum+x.weight,0);for(const item of items){target-=item.weight;if(target<0)return item}return items.at(-1)}
+function question(content,key){const [kind,index,part]=key.split(':');if(kind==='article')return content.articles[+index][part];if(kind==='quiz')return content.quizzes.find(q=>q.after===+index);return content.boss[+index]}
+function score(key){if(key.startsWith('article:')||key.startsWith('quiz:'))return 5;return [8,8,9][+key.split(':')[1]]}
+function publicContent(content){const out=structuredClone(content);for(const a of out.articles)for(const k of ['select','effect'])for(const f of ['answer','explanation','hint'])delete a[k][f];for(const q of [...out.quizzes,...out.boss])for(const f of ['answer','explanation','hint'])delete q[f];return out}
+function currentStudent(){const id=localStorage.getItem(SESSION_KEY);return memoryDb.students.find(x=>x.id===id)||null}
+function gameView(student){const s=student.state,c=memoryDb.content;return {profile:{class_name:student.class_name,student_no:student.student_no,nickname:student.nickname},state:s,next:currentKey(s),content:publicContent(c),level:level(s.views,c.settings),finals:[]}}
+function profileError(text){throw Error(text)}
+
+window.staticApi=async function(path,body){
+  const db=await loadDb();memoryDb=db;
+  if(path==='bootstrap'){const student=currentStudent();return {classes:db.content.classes,game_open:db.content.settings.open,game:student?gameView(student):null,admin:false}}
+  if(path==='register'){
+    if(!db.content.settings.open)profileError('게임 시작이 닫혀 있습니다.');
+    const cls=String(body.class_name),num=Number(body.student_no),nickname=String(body.nickname||'').trim().slice(0,20);
+    if(!db.content.classes.includes(cls)||num<1||num>35||!nickname)profileError('반, 번호, 닉네임을 확인하세요.');
+    if(db.students.some(x=>x.class_name===cls&&x.student_no===num))profileError('이 브라우저에 해당 번호의 기록이 있습니다. 이어서 접속을 선택하세요.');
+    const code=`${makeId().replaceAll('-','').slice(0,8)}-${makeId().replaceAll('-','').slice(0,8)}`.toUpperCase();
+    const student={id:makeId(),class_name:cls,student_no:num,nickname,recovery_code:code,state:newState()};db.students.push(student);localStorage.setItem(SESSION_KEY,student.id);save();return {recovery_code:code,game:gameView(student)};
+  }
+  if(path==='recover'){
+    const student=db.students.find(x=>x.class_name===body.class_name&&x.student_no===Number(body.student_no)&&x.recovery_code===String(body.code||'').trim().toUpperCase());
+    if(!student)profileError('반, 번호 또는 복구 코드가 맞지 않습니다.');localStorage.setItem(SESSION_KEY,student.id);return {game:gameView(student)};
+  }
+  if(path==='logout'){localStorage.removeItem(SESSION_KEY);return {ok:true}}
+  const student=currentStudent();if(!student)profileError('학생 등록 또는 기록 복구가 필요합니다.');
+  if(!db.content.settings.open)profileError('교사가 게임을 종료했습니다.');
+  const rid=String(body?.request_id||'');if(rid&&db.requests[student.id]?.[rid])return db.requests[student.id][rid];
+  const s=student.state,c=db.content,settings=c.settings,before=level(s.views,settings);let result;
+  if(path==='answer'){
+    const key=currentKey(s),choice=Number(body.choice);if(key!==body.key||['publish','spin','complete'].includes(key))profileError('현재 풀 수 있는 문제가 아닙니다.');
+    if(!Number.isInteger(choice)||choice<0||choice>3)profileError('선택지를 확인하세요.');const q=question(c,key),entry=s.attempts[key]||={count:0,wrong:0,first_correct:null,complete:false,first_correct_at:null,completed_at:null,choices:[]};
+    entry.count++;entry.choices.push(choice);const correct=choice===q.answer;if(entry.count===1){entry.first_correct=correct;if(correct){s.score+=score(key);entry.first_correct_at=new Date().toISOString()}}
+    if(correct){entry.complete=true;entry.completed_at=new Date().toISOString();s.solved.push(key);if(key.startsWith('boss:')){s.boss_stage++;if(s.boss_stage===3){const gain=settings.boss_views*s.pending_multiplier;s.views+=gain;s.pending_multiplier=1;s.completed=true;s.title='전설의 편집장';s.events.push({type:'boss',views:gain,level_from:before,level_to:level(s.views,settings)})}}}else entry.wrong++;
+    result={correct,explanation:q.explanation,hint:q.hint||'',game:null};
+  }else if(path==='publish'){
+    if(currentKey(s)!=='publish')profileError('아직 발행할 수 없습니다.');const rolled=choose(settings.multipliers).value,applied=Math.max(rolled,s.pending_multiplier),gain=settings.base_views*applied;s.views+=gain;s.pending_multiplier=1;s.article++;s.published.push({article:s.article,random_multiplier:rolled,applied_multiplier:applied,views:gain,at:new Date().toISOString()});result={reward:{type:'publish',views:gain,random_multiplier:rolled,applied_multiplier:applied,level_from:before,level_to:level(s.views,settings)},game:null};
+  }else if(path==='spin'){
+    if(currentKey(s)!=='spin')profileError('지금은 룰렛을 돌릴 수 없습니다.');const prize={...choose(settings.roulette)};if(prize.type==='views')s.views+=prize.value;else s.pending_multiplier=Math.max(s.pending_multiplier,prize.value);s.roulette[String(s.article)]=prize;result={reward:{type:'spin',prize,level_from:before,level_to:level(s.views,settings)},game:null};
+  }else profileError('지원하지 않는 요청입니다.');
+  result.game=gameView(student);db.requests[student.id]||={};if(rid)db.requests[student.id][rid]=structuredClone(result);save();return result;
+};
