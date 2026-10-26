@@ -132,8 +132,7 @@ const originalRenderWelcome=renderWelcome;
 renderWelcome=function(){
  originalRenderWelcome();
  const panel=document.createElement('section');panel.className='panel';
- panel.innerHTML='<h3>교사용</h3><p class="tiny muted">문제를 수정한 뒤 파일을 이 채팅에 올려 주시면 공개 사이트에 반영해 드립니다.</p><button class="btn blue full" id="teacher-edit">📝 문제 수정하기</button>';
+ panel.innerHTML='<h3>교사용</h3><p class="tiny muted">학생들에게 공개되는 문제 파일입니다. 로그인한 GitHub 계정에 저장소 수정 권한이 있어야 바꿀 수 있습니다.</p><a class="btn blue full" style="display:block;text-align:center;text-decoration:none" href="https://github.com/dreamoflondonbridge-netizen/new-website/edit/main/seed.json" target="_blank" rel="noopener">📝 GitHub에서 문제 수정</a>';
  screen.append(panel);
- $('#teacher-edit').onclick=async()=>{try{adminTab='content';editTab='article';editIndex=0;await loadAdmin()}catch(e){showError(e)}};
 };
 async function boot(){try{const d=await api('bootstrap');classes=d.classes;game=d.game;if(game&&localStorage.getItem('sound')===null){soundOn=!!game.content.settings.sound;$('#sound').textContent=soundOn?'🔊':'🔇'}if(d.admin)await loadAdmin();else render()}catch(e){screen.innerHTML='<section class="panel"><h2>서버 연결 실패</h2><p>잠시 후 새로고침해 주세요.</p></section>';showError(e)}}boot();
