@@ -8,6 +8,8 @@
 
 저장소에서 한 번만 **Settings → Pages → Build and deployment → Source → GitHub Actions**를 선택하세요. 이후 `main` 브랜치에 변경 사항이 올라가면 사이트가 자동으로 갱신됩니다. **Actions → Publish classroom game**에서 배포 상태와 접속 주소를 확인하고, 주소를 학생에게 QR코드로 나눠 주세요.
 
+예정된 학생 접속 주소: https://dreamoflondonbridge-netizen.github.io/new-website/
+
 저장소가 비공개이고 현재 GitHub 요금제가 비공개 저장소 Pages를 지원하지 않으면 Pages 설정에서 안내가 표시될 수 있습니다. 그 경우 저장소 공개 여부를 선생님이 결정해야 합니다. 이 프로젝트에서는 저장소 공개 설정을 변경하지 않습니다.
 
 ## 기록 저장 방식
