@@ -485,6 +485,13 @@
     ],
     "boss_views": 100000,
     "sound": true,
-    "open": true
+    "open": true,
+    "office_images": [
+      "./assets/offices/level-1.png",
+      "./assets/offices/level-2.png",
+      "./assets/offices/level-3.png",
+      "./assets/offices/level-4.png",
+      "./assets/offices/level-5.png"
+    ]
   }
 }
