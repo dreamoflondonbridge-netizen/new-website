@@ -5,7 +5,10 @@ let memoryDb;
 async function loadDb(){
   if(memoryDb)return memoryDb;
   try{memoryDb=JSON.parse(localStorage.getItem(DB_KEY)||'null')}catch{}
-  if(!memoryDb){const response=await fetch(new URL('./seed.json',location.href));if(!response.ok)throw Error('게임 자료를 불러오지 못했습니다.');memoryDb={content:await response.json(),students:[],requests:{}};save()}
+  const response=await fetch(new URL('./seed.json',location.href),{cache:'no-store'});if(!response.ok)throw Error('게임 자료를 불러오지 못했습니다.');const published=await response.json();
+  if(!memoryDb)memoryDb={content:published,publishedVersion:published.version||1,students:[],requests:{}};
+  else if(memoryDb.publishedVersion!==(published.version||1)){memoryDb.content=published;memoryDb.publishedVersion=published.version||1}
+  save();
   return memoryDb;
 }
 function save(){localStorage.setItem(DB_KEY,JSON.stringify(memoryDb))}
@@ -24,6 +27,10 @@ function profileError(text){throw Error(text)}
 window.staticApi=async function(path,body){
   const db=await loadDb();memoryDb=db;
   if(path==='bootstrap'){const student=currentStudent();return {classes:db.content.classes,game_open:db.content.settings.open,game:student?gameView(student):null,admin:false}}
+  if(path==='admin/state')return {version:db.content.version||1,content:structuredClone(db.content),students:[],awards:[],finals:[],versions:[]};
+  if(path==='admin/content'){
+    db.content=structuredClone(body.content);db.content.version=(memoryDb.content.version||1)+1;save();return {version:db.content.version};
+  }
   if(path==='register'){
     if(!db.content.settings.open)profileError('게임 시작이 닫혀 있습니다.');
     const cls=String(body.class_name),num=Number(body.student_no),nickname=String(body.nickname||'').trim().slice(0,20);
