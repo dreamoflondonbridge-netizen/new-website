@@ -132,3 +132,4 @@ h1,h2,h3{color:#f0f5ff}.muted,.stat-card small{color:#aebcda}footer{color:#9aa9c
 .restart-mini{padding:6px 9px;font-size:12px;border-width:1px;color:#ffe7ef;background:linear-gradient(135deg,#633953,#3d2949);border-color:#b9688e;box-shadow:0 2px 0 #25182e}
 .restart-mini:hover{color:#fff;background:linear-gradient(135deg,#8d466b,#53365c);box-shadow:0 0 12px #ef77aa55}
 @media(max-width:560px){.head-tools{gap:4px}.restart-mini,.record-mini{padding:4px 6px;font-size:10px}.mission-badge{font-size:10px;padding:5px 6px}}
+.question-toolbar{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:-3px 0 12px;padding-bottom:7px;border-bottom:1px solid #6579aa66;color:#aebddd;font:12px Jua,sans-serif}.question-toolbar .restart-mini{flex:0 0 auto}
