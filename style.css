@@ -162,12 +162,16 @@ h1,h2,h3{color:#f0f5ff}.muted,.stat-card small{color:#aebcda}footer{color:#9aa9c
 @media(max-width:560px){.game-home-head{min-height:72px}.game-home-head>div:first-child{width:100%;justify-content:space-between}.game-home-head .head-tools{position:absolute;top:35px;right:6px;max-width:100%;justify-content:flex-end}.office-hud{top:91px}.office-stage .inspect-hint{display:none}}
 .reader-interest-chip{margin-top:5px;padding:4px 7px;border:1px solid #70d5e2aa;border-radius:8px;background:#12374bc9;color:#baf8ff;font:11px Jua,sans-serif;text-align:left}.reader-interest-reward{max-width:max-content;margin:7px auto;padding:5px 11px;border:1px solid #59d8e6;border-radius:20px;background:#153b50;color:#b9f6ff;font:12px Jua,sans-serif;box-shadow:0 0 14px #28caed33}
 .story-response{margin:9px 0;padding:9px 12px;border:1px solid #6b87b9;border-radius:10px;background:linear-gradient(135deg,#1a2b49,#202849);color:#ecf2ff;text-align:left;line-height:1.55}.story-response b{color:#ffe29a;font:14px Jua,sans-serif}.staff-response{border-color:#46bdd0;background:linear-gradient(135deg,#143848,#192c49)}
-.restart-inbox-stack{display:flex;flex-direction:column;align-items:stretch;gap:4px}
+.head-tools{display:grid;grid-template-columns:auto auto;grid-template-rows:auto auto;align-items:center;justify-items:end;gap:4px 7px}
+.head-tools>.mission-badge{grid-column:1;grid-row:1}
+.head-tools>.record-mini{grid-column:2;grid-row:1}
+.restart-inbox-stack{display:flex;flex-direction:column;align-items:stretch;gap:2px;grid-column:2;grid-row:2}
+.restart-inbox-stack .restart-mini{padding:5px 7px;font-size:11px}
 .postcard-count-btn{display:flex;align-items:center;justify-content:space-between;gap:7px;min-width:145px;padding:5px 8px;border:2px solid #ffe58a;border-radius:10px;background:linear-gradient(135deg,#fff5b8,#f6ca50);color:#302847;box-shadow:0 3px 0 #a66c32,0 0 13px #ffdc5966;font:12px Jua,sans-serif;white-space:nowrap;cursor:pointer}
 .postcard-count-btn b{padding:2px 6px;border-radius:20px;background:#5b3a51;color:#fff1a5;font-size:11px}
 .postcard-count-btn:hover,.postcard-count-btn:focus-visible{outline:2px solid #fff5c2;outline-offset:2px;filter:brightness(1.08);transform:translateY(-1px)}
 .postcard-count-btn.has-unread{animation:postcard-glow 2s ease-in-out infinite}
 .question-actions .mailbox-mini{border:1px solid #8be8ef;color:#e9feff;background:linear-gradient(135deg,#17647a,#374381);box-shadow:0 0 13px #45dbe966,0 3px 0 #12182c;font-weight:bold}
 @keyframes postcard-glow{50%{box-shadow:0 3px 0 #a66c32,0 0 19px #ffe16eaa}}
-@media(max-width:560px){.restart-inbox-stack{gap:2px}.postcard-count-btn{min-width:unset;padding:3px 5px;font-size:9px}.postcard-count-btn b{font-size:9px;padding:1px 4px}.question-actions .mailbox-mini{font-size:10px}}
+@media(max-width:560px){.head-tools{grid-template-columns:auto auto;grid-template-rows:auto auto;gap:2px 4px}.head-tools>.mission-badge{grid-column:1;grid-row:1}.head-tools>.record-mini{grid-column:2;grid-row:1}.restart-inbox-stack{grid-column:2;grid-row:2;gap:1px}.restart-inbox-stack .restart-mini{padding:3px 5px;font-size:9px}.postcard-count-btn{min-width:unset;padding:3px 5px;font-size:9px}.postcard-count-btn b{font-size:9px;padding:1px 4px}.question-actions .mailbox-mini{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.postcard-count-btn.has-unread{animation:none}}
