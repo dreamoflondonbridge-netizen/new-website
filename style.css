@@ -118,6 +118,7 @@ h1,h2,h3{color:#f0f5ff}.muted,.stat-card small{color:#aebcda}footer{color:#9aa9c
 .story-portrait.has-portrait{display:block;overflow:visible;border:0;border-radius:0;background:transparent;box-shadow:none;filter:none}
 .story-portrait.has-portrait:before{display:none}
 .story-portrait.has-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top;image-rendering:pixelated}
+.story-portrait.reader-cutout img{object-fit:contain;object-position:center bottom}
 .story-portrait.has-portrait small{bottom:6px;left:50%;transform:translateX(-50%);border-color:#fff0c4;background:#172440ed}
 .story-portrait small{position:absolute;bottom:11px;padding:4px 10px;border:1px solid #a9bde9;border-radius:20px;background:#172440eF;color:#eaf2ff;font:12px Jua,sans-serif}
 .story-scene-caption{position:absolute;right:13px;bottom:12px;color:#e9e6d8aa;font-size:11px;text-shadow:0 2px 5px #000}
