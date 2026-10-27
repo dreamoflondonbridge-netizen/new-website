@@ -1,5 +1,5 @@
 {
-  "version": 20,
+  "version": 21,
   "classes": [
     "7반",
     "8반",
@@ -530,7 +530,6 @@
   "boss_dialogue": "조회수만 잘 나오면 되는 거 아니야? 사진도 통계도 대충 넣으면 되지!",
   "finals": [],
   "settings": {
-    "base_views": 10000,
     "multipliers": [
       {
         "value": 1,
