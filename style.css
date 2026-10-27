@@ -67,3 +67,7 @@ body{font-size:15px;line-height:1.4}.brand-icon{font-size:36px}.brand strong{fon
  .office-hud{padding:8px 14px}.game-actions{padding-top:7px}.game-actions .action-pair .btn{min-height:54px}
  .panel{padding:16px;margin-bottom:10px}.mission-card{padding:14px;margin:10px 0}
 }
+/* Always fit complete source artwork; expanded choices grow with the image. */
+.media-art img{display:block;width:100%;height:100%;object-fit:contain}
+.media-art.enlarged{height:auto!important;min-height:0;max-height:none;width:100%;overflow:visible;background:#f6f7fb;padding:6px}
+.media-art.enlarged img{width:auto!important;height:auto!important;max-width:100%!important;max-height:70vh!important;object-fit:contain}
