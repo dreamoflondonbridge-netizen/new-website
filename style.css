@@ -181,3 +181,5 @@ h1,h2,h3{color:#f0f5ff}.muted,.stat-card small{color:#aebcda}footer{color:#9aa9c
 .ox-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.ox-choices .choice{justify-content:center;min-height:64px;margin:0}.ox-choices .choice .letter{min-width:58px;text-align:center;font-size:20px}.multi-choices .choice.selected{border-color:#69dbbd;background:#183c47;box-shadow:0 0 0 2px #69dbbd35,0 0 15px #69dbbd24}
 .choice{font-size:14px;line-height:1.4;padding:10px 12px;gap:9px;align-items:flex-start;white-space:normal}.choice>span:last-child{min-width:0;flex:1}.choice .letter{padding:4px 8px;font-size:12px}
 .ox-choices .choice{align-items:center}
+.reader-inbox-head .inbox-head-actions{display:flex;flex-direction:column;gap:6px;flex:0 0 auto}.reader-inbox-head .inbox-head-actions .btn{min-height:38px;white-space:nowrap}.reader-inbox-head .inbox-home{color:#17213a;background:linear-gradient(135deg,#fff1a8,#ffc84b);border-color:#ffe27a;box-shadow:0 3px 0 #9b6827;font-weight:bold}
+@media(max-width:560px){.reader-inbox-head .inbox-head-actions{gap:4px}.reader-inbox-head .inbox-head-actions .btn{min-height:34px;padding:5px 8px;font-size:11px}}
