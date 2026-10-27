@@ -1,5 +1,5 @@
 {
-  "version": 17,
+  "version": 19,
   "classes": [
     "7반",
     "8반",
@@ -8,7 +8,7 @@
   ],
   "articles": [
     {
-      "title": "노로바이러스는 언제 많이 발생할까?",
+      "title": "겨울 식중독의 원인, 노로바이러스",
       "body": "노로바이러스 발생과 함께 겨울철 식중독이 기승입니다. 최근 5년간 식품의약품안전처 집계를 보면, 노로바이러스는 12월부터 감염이 증가하기 시작해 3월까지 많이 발생하는 것으로 나타났습니다.\n\n겨울철에는 음식이 잘 상하지 않는다는 생각에 식중독 예방에 소홀할 수 있습니다. 하지만 노로바이러스는 영하 20도에서도 살아남을 정도로 추위에 강하고, 아주 적은 양으로도 식중독을 일으킬 수 있습니다.",
       "select": {
         "prompt": "이 기사에 가장 적합한 자료는?",
@@ -564,6 +564,48 @@
       "./assets/offices/level-3.png",
       "./assets/offices/level-4.png",
       "./assets/offices/level-5.png"
+    ],
+    "roulette": [
+      {
+        "type": "views",
+        "value": 5000,
+        "weight": 22
+      },
+      {
+        "type": "views",
+        "value": 15000,
+        "weight": 20
+      },
+      {
+        "type": "views",
+        "value": 30000,
+        "weight": 16
+      },
+      {
+        "type": "views",
+        "value": 50000,
+        "weight": 8
+      },
+      {
+        "type": "multiplier",
+        "value": 2,
+        "weight": 16
+      },
+      {
+        "type": "multiplier",
+        "value": 3,
+        "weight": 7
+      },
+      {
+        "type": "penalty",
+        "value": 5000,
+        "weight": 6
+      },
+      {
+        "type": "penalty",
+        "value": 20000,
+        "weight": 5
+      }
     ]
   },
   "planning": [
