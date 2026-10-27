@@ -1,5 +1,5 @@
 {
-  "version": 14,
+  "version": 15,
   "classes": [
     "7반",
     "8반",
@@ -547,38 +547,6 @@
       {
         "value": 10,
         "weight": 2
-      }
-    ],
-    "roulette": [
-      {
-        "type": "views",
-        "value": 2000,
-        "weight": 30
-      },
-      {
-        "type": "views",
-        "value": 5000,
-        "weight": 25
-      },
-      {
-        "type": "views",
-        "value": 8000,
-        "weight": 20
-      },
-      {
-        "type": "multiplier",
-        "value": 2,
-        "weight": 15
-      },
-      {
-        "type": "multiplier",
-        "value": 3,
-        "weight": 7
-      },
-      {
-        "type": "views",
-        "value": 50000,
-        "weight": 3
       }
     ],
     "thresholds": [

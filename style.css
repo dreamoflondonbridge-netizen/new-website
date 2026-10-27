@@ -183,3 +183,5 @@ h1,h2,h3{color:#f0f5ff}.muted,.stat-card small{color:#aebcda}footer{color:#9aa9c
 .ox-choices .choice{align-items:center}
 .reader-inbox-head .inbox-head-actions{display:flex;flex-direction:column;gap:6px;flex:0 0 auto}.reader-inbox-head .inbox-head-actions .btn{min-height:38px;white-space:nowrap}.reader-inbox-head .inbox-home{color:#17213a;background:linear-gradient(135deg,#fff1a8,#ffc84b);border-color:#ffe27a;box-shadow:0 3px 0 #9b6827;font-weight:bold}
 @media(max-width:560px){.reader-inbox-head .inbox-head-actions{gap:4px}.reader-inbox-head .inbox-head-actions .btn{min-height:34px;padding:5px 8px;font-size:11px}}
+
+.small-view-reward{margin:10px auto;padding:9px 14px;width:max-content;max-width:100%;border:1px solid #4ed8ff;border-radius:999px;background:linear-gradient(135deg,#123b63,#195d86);color:#e8f9ff;font-size:1rem;font-weight:800;box-shadow:0 0 14px #38bdf855}.growth-celebration-inline{margin:8px auto;padding:8px 12px;border-radius:12px;background:linear-gradient(100deg,#704a12,#dcae38,#704a12);color:#fff8d8;font-weight:800;text-align:center}
