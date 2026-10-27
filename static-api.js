@@ -52,7 +52,7 @@ window.staticApi=async function(path,body){
   const rid=String(body?.request_id||'');if(rid&&db.requests[student.id]?.[rid])return db.requests[student.id][rid];
   const s=student.state,c=db.content,settings=c.settings,before=level(s.views,settings);let result;
   if(path==='restart'){
-    if(!s.completed)profileError('한 판을 완료한 뒤 새로 시작할 수 있습니다.');student.history||=[];student.history.push({run:student.history.length+1,views:s.views,score:s.score,completed_at:new Date().toISOString(),article:s.article});student.state=newState();result={ok:true,game:gameView(student)};
+    student.history||=[];student.history.push({run:student.history.length+1,views:s.views,score:s.score,completed:s.completed,articles:s.article,boss_stage:s.boss_stage,attempts:Object.values(s.attempts||{}).reduce((n,a)=>n+(a.count||0),0),completed_at:new Date().toISOString()});student.state=newState();result={ok:true,game:gameView(student)};
   }else if(path==='answer'){
     const key=currentKey(s),choice=Number(body.choice);if(key!==body.key||['publish','spin','complete'].includes(key))profileError('현재 풀 수 있는 문제가 아닙니다.');
     if(!Number.isInteger(choice)||choice<0||choice>3)profileError('선택지를 확인하세요.');const q=question(c,key),entry=s.attempts[key]||={count:0,wrong:0,first_correct:null,complete:false,first_correct_at:null,completed_at:null,choices:[]};

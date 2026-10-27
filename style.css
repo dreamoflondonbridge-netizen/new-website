@@ -129,3 +129,6 @@ h1,h2,h3{color:#f0f5ff}.muted,.stat-card small{color:#aebcda}footer{color:#9aa9c
 @keyframes story-text-in{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
 @media(max-width:560px){.overlay{padding:8px}.overlay-card.story-dialogue-card{max-height:96dvh;border-radius:13px}.story-dialogue{min-height:min(650px,91dvh)}.story-backdrop{min-height:230px}.story-portrait{width:65%;height:min(39vh,300px);min-height:185px}.story-portrait span{font-size:clamp(105px,33vw,155px)}.story-textbox{padding:20px 14px 12px}.story-line{font-size:17px;min-height:3.8em}.story-next{min-width:138px}.story-scene-top{font-size:12px}}
 @media(max-height:620px){.story-dialogue{min-height:91dvh}.story-backdrop{min-height:190px}.story-portrait{height:40vh;min-height:160px}.story-portrait span{font-size:clamp(90px,23vh,135px)}.story-textbox{padding-top:18px;padding-bottom:8px}.story-line{min-height:2.6em;margin-bottom:8px!important}}
+.restart-mini{padding:6px 9px;font-size:12px;border-width:1px;color:#ffe7ef;background:linear-gradient(135deg,#633953,#3d2949);border-color:#b9688e;box-shadow:0 2px 0 #25182e}
+.restart-mini:hover{color:#fff;background:linear-gradient(135deg,#8d466b,#53365c);box-shadow:0 0 12px #ef77aa55}
+@media(max-width:560px){.head-tools{gap:4px}.restart-mini,.record-mini{padding:4px 6px;font-size:10px}.mission-badge{font-size:10px;padding:5px 6px}}
