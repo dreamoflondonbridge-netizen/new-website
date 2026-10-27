@@ -1,5 +1,5 @@
 {
-  "version": 15,
+  "version": 16,
   "classes": [
     "7반",
     "8반",
@@ -556,7 +556,6 @@
       600000,
       1000000
     ],
-    "boss_views": 25000,
     "sound": true,
     "open": true,
     "office_images": [
