@@ -1,5 +1,6 @@
 const DB_KEY='newsroom-static-v1';
 const SESSION_KEY='newsroom-session-v1';
+function copyStaticData(value){return typeof window.structuredClone==='function'?window.structuredClone(value):JSON.parse(JSON.stringify(value))}
 let memoryDb;
 
 async function loadDb(){
@@ -8,20 +9,20 @@ async function loadDb(){
   const response=await fetch(new URL('./seed.json',location.href),{cache:'no-store'});if(!response.ok)throw Error('게임 자료를 불러오지 못했습니다.');const published=await response.json();
   if(!memoryDb)memoryDb={content:published,publishedVersion:published.version||1,students:[],requests:{}};
   else if(memoryDb.publishedVersion!==(published.version||1)){memoryDb.content=published;memoryDb.publishedVersion=published.version||1}
-  for(const student of memoryDb.students){const s=student.state,i=s.article||0;if(!s.draft_mode){if(i<6&&s.solved?.includes(`article:${i}:select`)&&s.solved?.includes(`article:${i}:effect`))s.article=i+1;s.draft_mode=true}if(s.pending_multiplier_article===undefined)s.pending_multiplier_article=s.pending_multiplier>1?i:null;if(!Array.isArray(s.pending_article_multipliers)){s.pending_article_multipliers=[];if(s.pending_multiplier>1)s.pending_article_multipliers.push({article:s.pending_multiplier_article??i,value:s.pending_multiplier})}if(s.roulette_pending===undefined)s.roulette_pending=[2,4,6].includes(s.article)&&s.solved?.includes(`quiz:${s.article}`)&&!Object.hasOwn(s.roulette||{},String(s.article));if(!Array.isArray(s.roulette_events))s.roulette_events=[]}
+  for(const student of memoryDb.students){const s=student.state,i=s.article||0;if(!s.draft_mode){if(i<6&&s.solved?.includes(`article:${i}:select`)&&s.solved?.includes(`article:${i}:effect`))s.article=i+1;s.draft_mode=true}if(s.pending_multiplier_article===undefined)s.pending_multiplier_article=s.pending_multiplier>1?i:null;if(!Array.isArray(s.pending_article_multipliers)){s.pending_article_multipliers=[];if(s.pending_multiplier>1)s.pending_article_multipliers.push({article:s.pending_multiplier_article??i,value:s.pending_multiplier})}if(s.roulette_pending===undefined)s.roulette_pending=[2,4,6].includes(s.article)&&s.solved?.includes(`quiz:${s.article}`)&&!Object.prototype.hasOwnProperty.call(s.roulette||{},String(s.article));if(!Array.isArray(s.roulette_events))s.roulette_events=[]}
   save();
   return memoryDb;
 }
 function save(){localStorage.setItem(DB_KEY,JSON.stringify(memoryDb))}
-function makeId(){return crypto.randomUUID?crypto.randomUUID():`${Date.now()}-${Math.random()}`}
+function makeId(){return window.crypto&&typeof window.crypto.randomUUID==='function'?window.crypto.randomUUID():`${Date.now()}-${Math.random().toString(36).slice(2)}`}
 function newState(){return {article:0,draft_mode:true,views:0,score:0,solved:[],attempts:{},published:[],roulette:{},roulette_pending:false,roulette_events:[],pending_multiplier:1,pending_multiplier_article:null,pending_article_multipliers:[],boss_stage:0,completed:false,events:[]}}
-function syncPendingMultiplier(s){const list=s.pending_article_multipliers||[];s.pending_multiplier=list.length?Math.max(...list.map(x=>x.value)):1;s.pending_multiplier_article=list.length?list.at(-1).article:null}
+function syncPendingMultiplier(s){const list=s.pending_article_multipliers||[];s.pending_multiplier=list.length?Math.max(...list.map(x=>x.value)):1;s.pending_multiplier_article=list.length?list[list.length-1].article:null}
 function level(views,settings){let n=1;settings.thresholds.forEach((t,i)=>{if(views>=t)n=i+1});return n}
 function currentKey(s){const n=s.article;if([2,4,6].includes(n)&&!s.solved.includes(`quiz:${n}`))return `quiz:${n}`;if(n<6){if(!s.solved.includes(`article:${n}:select`))return `article:${n}:select`;if(!s.solved.includes(`article:${n}:effect`))return `article:${n}:effect`;return 'publish'}return s.boss_stage<3?`boss:${s.boss_stage}`:'complete'}
-function choose(items){let target=Math.random()*items.reduce((sum,x)=>sum+x.weight,0);for(const item of items){target-=item.weight;if(target<0)return item}return items.at(-1)}
+function choose(items){let target=Math.random()*items.reduce((sum,x)=>sum+x.weight,0);for(const item of items){target-=item.weight;if(target<0)return item}return items[items.length-1]}
 function question(content,key){const [kind,index,part]=key.split(':');if(kind==='article')return content.articles[+index][part];if(kind==='quiz')return content.quizzes.find(q=>q.after===+index);return content.boss[+index]}
 function score(key){if(key.startsWith('article:')||key.startsWith('quiz:'))return 5;return [8,8,9][+key.split(':')[1]]}
-function publicContent(content){const out=structuredClone(content);for(const a of out.articles)for(const k of ['select','effect'])for(const f of ['answer','explanation','hint'])delete a[k][f];for(const q of [...out.quizzes,...out.boss])for(const f of ['answer','explanation','hint'])delete q[f];return out}
+function publicContent(content){const out=copyStaticData(content);for(const a of out.articles)for(const k of ['select','effect'])for(const f of ['answer','explanation','hint'])delete a[k][f];for(const q of [...out.quizzes,...out.boss])for(const f of ['answer','explanation','hint'])delete q[f];return out}
 function currentStudent(){const id=localStorage.getItem(SESSION_KEY);return memoryDb.students.find(x=>x.id===id)||null}
 function gameView(student){const s=student.state,c=memoryDb.content;return {profile:{class_name:student.class_name,student_no:student.student_no,nickname:student.nickname},state:s,next:currentKey(s),content:publicContent(c),level:level(s.views,c.settings),finals:[],history:student.history||[]}}
 function profileError(text){throw Error(text)}
@@ -29,16 +30,16 @@ function profileError(text){throw Error(text)}
 window.staticApi=async function(path,body){
   const db=await loadDb();memoryDb=db;
   if(path==='bootstrap'){const student=currentStudent();return {classes:db.content.classes,game_open:db.content.settings.open,game:student?gameView(student):null,admin:false}}
-  if(path==='admin/state')return {version:db.content.version||1,content:structuredClone(db.content),students:[],awards:[],finals:[],versions:[]};
+  if(path==='admin/state')return {version:db.content.version||1,content:copyStaticData(db.content),students:[],awards:[],finals:[],versions:[]};
   if(path==='admin/content'){
-    db.content=structuredClone(body.content);db.content.version=(memoryDb.content.version||1)+1;save();return {version:db.content.version};
+    db.content=copyStaticData(body.content);db.content.version=(memoryDb.content.version||1)+1;save();return {version:db.content.version};
   }
   if(path==='register'){
     if(!db.content.settings.open)profileError('게임 시작이 닫혀 있습니다.');
     const cls=String(body.class_name),num=Number(body.student_no),nickname=String(body.nickname||'').trim().slice(0,20);
     if(!db.content.classes.includes(cls)||num<1||num>37||!nickname)profileError('반, 번호, 닉네임을 확인하세요.');
     if(db.students.some(x=>x.class_name===cls&&x.student_no===num))profileError('이 브라우저에 해당 번호의 기록이 있습니다. 이어서 접속을 선택하세요.');
-    const code=`${makeId().replaceAll('-','').slice(0,8)}-${makeId().replaceAll('-','').slice(0,8)}`.toUpperCase();
+    const code=`${makeId().replace(/-/g,'').slice(0,8)}-${makeId().replace(/-/g,'').slice(0,8)}`.toUpperCase();
     const student={id:makeId(),class_name:cls,student_no:num,nickname,recovery_code:code,state:newState()};db.students.push(student);localStorage.setItem(SESSION_KEY,student.id);save();return {recovery_code:code,game:gameView(student)};
   }
   if(path==='recover'){
@@ -64,5 +65,5 @@ window.staticApi=async function(path,body){
   }else if(path==='spin'){
     if(!s.roulette_pending)profileError('지금은 룰렛을 돌릴 수 없습니다.');const prize={...choose(settings.roulette)};if(prize.type==='views')s.views+=prize.value;else{const list=s.pending_article_multipliers||=[],existing=list.find(x=>x.article===s.article);if(existing)existing.value=Math.max(existing.value,prize.value);else list.push({article:s.article,value:prize.value});s.pending_article_multipliers=list;syncPendingMultiplier(s)}s.roulette_pending=false;s.roulette_events||=[];s.roulette_events.push({article:s.article,prize,at:new Date().toISOString()});result={reward:{type:'spin',prize,level_from:before,level_to:level(s.views,settings)},game:null};
   }else profileError('지원하지 않는 요청입니다.');
-  result.game=gameView(student);db.requests[student.id]||={};if(rid)db.requests[student.id][rid]=structuredClone(result);save();return result;
+  result.game=gameView(student);db.requests[student.id]||={};if(rid)db.requests[student.id][rid]=copyStaticData(result);save();return result;
 };
