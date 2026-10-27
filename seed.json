@@ -1,5 +1,5 @@
 {
-  "version": 6,
+  "version": 7,
   "classes": [
     "7반",
     "8반",
@@ -437,11 +437,15 @@
       },
       {
         "value": 2,
-        "weight": 25
+        "weight": 30
       },
       {
         "value": 5,
-        "weight": 25
+        "weight": 18
+      },
+      {
+        "value": 10,
+        "weight": 2
       }
     ],
     "roulette": [
