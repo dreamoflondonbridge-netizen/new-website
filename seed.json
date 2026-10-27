@@ -1,5 +1,5 @@
 {
-  "version": 5,
+  "version": 6,
   "classes": [
     "7반",
     "8반",
@@ -8,339 +8,339 @@
   ],
   "articles": [
     {
-      "title": "우리 학교 급식, 얼마나 남길까?",
-      "body": "급식 잔반을 줄이기 위해 월별 잔반량 변화와 실천 효과를 살펴보자.",
+      "title": "노로바이러스는 언제 많이 발생할까?",
+      "body": "월별 노로바이러스 발생 현황을 바탕으로 유행 시기를 알리는 기사입니다.",
       "select": {
         "prompt": "이 기사에 가장 적합한 자료는?",
         "choices": [
           {
-            "title": "잔반량(kg) 3월 120, 4월 95, 5월 68",
-            "kind": "graph",
-            "source": "수업용 가상 조사 자료",
-            "unit": "명/개/시간 등 문항 참고",
-            "period": "예시 기간",
-            "image": ""
-          },
-          {
-            "title": "급식실 입구 사진",
+            "title": "월별 노로바이러스 발생 현황 그래프",
             "kind": "photo",
-            "source": "수업용 예시 사진",
-            "unit": "",
+            "source": "노로바이러스 학습 자료",
             "period": "",
-            "image": ""
+            "unit": "",
+            "image": "./assets/article-choices/answer-1.jpg"
           },
           {
-            "title": "오늘의 메뉴 표",
-            "kind": "table",
-            "source": "수업용 예시 자료",
-            "unit": "",
+            "title": "다른 문제의 정답 자료 2",
+            "kind": "photo",
+            "source": "노로바이러스 학습 자료",
             "period": "",
-            "image": ""
+            "unit": "",
+            "image": "./assets/article-choices/answer-2.jpg"
           },
           {
-            "title": "음식 캐릭터 그림",
-            "kind": "illustration",
-            "source": "수업용 삽화",
-            "unit": "",
+            "title": "오답 사진 자료 1",
+            "kind": "photo",
+            "source": "노로바이러스 관련 이미지",
             "period": "",
-            "image": ""
+            "unit": "",
+            "image": "./assets/article-choices/distractor-01.jpg"
+          },
+          {
+            "title": "오답 사진 자료 2",
+            "kind": "photo",
+            "source": "노로바이러스 관련 이미지",
+            "period": "",
+            "unit": "",
+            "image": "./assets/article-choices/distractor-02.jpg"
           }
         ],
         "answer": 0,
-        "explanation": "월별 잔반량이 줄어드는 추세를 보여 주는 자료이므로 글의 목적에 맞습니다.",
-        "hint": "본문에서 비교하거나 확인하려는 정보를 찾으세요."
+        "explanation": "월별 노로바이러스 발생 현황 그래프이므로 기사 주제에 맞는 자료입니다.",
+        "hint": "기사에서 다루는 내용과 각 자료에 담긴 정보를 비교해 보세요."
       },
       "effect": {
-        "prompt": "선택한 자료의 효과로 가장 적절한 것은?",
+        "prompt": "이 자료가 기사에 주는 효과로 가장 적절한 것은?",
         "choices": [
-          "월별 변화가 한눈에 보여 실천 효과를 비교할 수 있다",
-          "기사의 내용과 관계없는 장식만 늘어난다",
-          "글에 없는 사실을 자동으로 증명한다",
-          "자료의 출처를 확인하지 않아도 된다"
+          "월별 발생 건수를 비교해 유행 시기를 파악할 수 있다.",
+          "식품의 가열 온도를 확인할 수 있다.",
+          "가정에서 감염을 막는 방법을 확인할 수 있다.",
+          "손 씻기 순서를 따라 할 수 있다."
         ],
         "answer": 0,
-        "explanation": "월별 변화가 한눈에 보여 실천 효과를 비교할 수 있다는 점이 핵심입니다.",
-        "hint": "글의 목적과 자료가 보여 주는 정보를 연결해 보세요."
+        "explanation": "월별 발생 건수를 비교해 유행 시기를 파악할 수 있다.",
+        "hint": "자료에 실제로 담긴 정보가 기사 내용을 어떻게 이해하게 하는지 생각해 보세요."
       }
     },
     {
-      "title": "스마트폰과 수면 시간",
-      "body": "우리 반의 스마트폰 사용 시간과 평균 수면 시간을 조사했다. 두 값의 관계를 설명하려 한다.",
+      "title": "어떤 식품에서 노로바이러스에 감염될까?",
+      "body": "노로바이러스 감염과 관련된 식품 위생 정보를 소개하는 기사입니다.",
       "select": {
         "prompt": "이 기사에 가장 적합한 자료는?",
         "choices": [
           {
-            "title": "1시간 이하 8시간, 2~3시간 7시간, 4시간 이상 6시간",
-            "kind": "graph",
-            "source": "수업용 가상 조사 자료",
-            "unit": "명/개/시간 등 문항 참고",
-            "period": "예시 기간",
-            "image": ""
-          },
-          {
-            "title": "휴대전화 광고 사진",
+            "title": "노로바이러스 감염 관련 식품 자료",
             "kind": "photo",
-            "source": "수업용 예시 사진",
-            "unit": "",
+            "source": "노로바이러스 학습 자료",
             "period": "",
-            "image": ""
+            "unit": "",
+            "image": "./assets/article-choices/answer-2.jpg"
           },
           {
-            "title": "앱 아이콘 모음",
-            "kind": "table",
-            "source": "수업용 예시 자료",
-            "unit": "",
+            "title": "다른 문제의 정답 자료 3",
+            "kind": "photo",
+            "source": "노로바이러스 학습 자료",
             "period": "",
-            "image": ""
+            "unit": "",
+            "image": "./assets/article-choices/answer-3.jpg"
           },
           {
-            "title": "학교 시간표",
-            "kind": "illustration",
-            "source": "수업용 삽화",
-            "unit": "",
+            "title": "오답 사진 자료 4",
+            "kind": "photo",
+            "source": "노로바이러스 관련 이미지",
             "period": "",
-            "image": ""
+            "unit": "",
+            "image": "./assets/article-choices/distractor-04.jpg"
+          },
+          {
+            "title": "오답 사진 자료 3",
+            "kind": "photo",
+            "source": "노로바이러스 관련 이미지",
+            "period": "",
+            "unit": "",
+            "image": "./assets/article-choices/distractor-03.jpg"
           }
         ],
         "answer": 0,
-        "explanation": "사용 시간에 따른 수면 시간 비교 자료이므로 글의 목적에 맞습니다.",
-        "hint": "본문에서 비교하거나 확인하려는 정보를 찾으세요."
+        "explanation": "노로바이러스 감염 관련 식품 자료이므로 기사 주제에 맞는 자료입니다.",
+        "hint": "기사에서 다루는 내용과 각 자료에 담긴 정보를 비교해 보세요."
       },
       "effect": {
-        "prompt": "선택한 자료의 효과로 가장 적절한 것은?",
+        "prompt": "이 자료가 기사에 주는 효과로 가장 적절한 것은?",
         "choices": [
-          "사용 시간과 수면 시간의 관계를 비교할 수 있다",
-          "기사의 내용과 관계없는 장식만 늘어난다",
-          "글에 없는 사실을 자동으로 증명한다",
-          "자료의 출처를 확인하지 않아도 된다"
+          "감염과 관련된 식품 사례를 보여 주어 식품 위생에 주의하도록 돕는다.",
+          "월별 유행 시기를 비교할 수 있다.",
+          "감염 후 나타나는 증상을 확인할 수 있다.",
+          "가정 내 감염 예방 절차를 알 수 있다."
         ],
         "answer": 0,
-        "explanation": "사용 시간과 수면 시간의 관계를 비교할 수 있다는 점이 핵심입니다.",
-        "hint": "글의 목적과 자료가 보여 주는 정보를 연결해 보세요."
+        "explanation": "감염과 관련된 식품 사례를 보여 주어 식품 위생에 주의하도록 돕는다.",
+        "hint": "자료에 실제로 담긴 정보가 기사 내용을 어떻게 이해하게 하는지 생각해 보세요."
       }
     },
     {
-      "title": "안전한 자전거 통학",
-      "body": "자전거로 통학할 때 가장 많은 사고가 난 위치를 확인하고 안전 수칙을 알리자.",
+      "title": "손 씻기로 노로바이러스 예방하기",
+      "body": "올바른 손 씻기와 감염 예방 방법을 안내하는 기사입니다.",
       "select": {
         "prompt": "이 기사에 가장 적합한 자료는?",
         "choices": [
           {
-            "title": "학교 주변 지도: 정문 앞 12건, 사거리 9건, 골목 3건",
-            "kind": "map",
-            "source": "수업용 가상 조사 자료",
-            "unit": "명/개/시간 등 문항 참고",
-            "period": "예시 기간",
-            "image": ""
-          },
-          {
-            "title": "자전거 제품 사진",
+            "title": "다른 문제의 정답 자료 4",
             "kind": "photo",
-            "source": "수업용 예시 사진",
-            "unit": "",
+            "source": "노로바이러스 학습 자료",
             "period": "",
-            "image": ""
+            "unit": "",
+            "image": "./assets/article-choices/answer-4.jpg"
           },
           {
-            "title": "헬멧 색상 표",
-            "kind": "table",
-            "source": "수업용 예시 자료",
-            "unit": "",
+            "title": "손 씻기와 감염 예방 안내 자료",
+            "kind": "photo",
+            "source": "노로바이러스 학습 자료",
             "period": "",
-            "image": ""
+            "unit": "",
+            "image": "./assets/article-choices/answer-3.jpg"
           },
           {
-            "title": "운동장 풍경 그림",
-            "kind": "illustration",
-            "source": "수업용 삽화",
-            "unit": "",
+            "title": "오답 사진 자료 6",
+            "kind": "photo",
+            "source": "노로바이러스 관련 이미지",
             "period": "",
-            "image": ""
+            "unit": "",
+            "image": "./assets/article-choices/distractor-06.jpg"
+          },
+          {
+            "title": "오답 사진 자료 5",
+            "kind": "photo",
+            "source": "노로바이러스 관련 이미지",
+            "period": "",
+            "unit": "",
+            "image": "./assets/article-choices/distractor-05.jpg"
           }
         ],
-        "answer": 0,
-        "explanation": "사고 위치를 표시한 통학로 지도이므로 글의 목적에 맞습니다.",
-        "hint": "본문에서 비교하거나 확인하려는 정보를 찾으세요."
+        "answer": 1,
+        "explanation": "손 씻기와 감염 예방 안내 자료이므로 기사 주제에 맞는 자료입니다.",
+        "hint": "기사에서 다루는 내용과 각 자료에 담긴 정보를 비교해 보세요."
       },
       "effect": {
-        "prompt": "선택한 자료의 효과로 가장 적절한 것은?",
+        "prompt": "이 자료가 기사에 주는 효과로 가장 적절한 것은?",
         "choices": [
-          "위험한 위치를 직관적으로 찾아 피할 수 있다",
-          "기사의 내용과 관계없는 장식만 늘어난다",
-          "글에 없는 사실을 자동으로 증명한다",
-          "자료의 출처를 확인하지 않아도 된다"
+          "손 씻는 방법을 시각적으로 보여 주어 예방 행동을 따라 하기 쉽다.",
+          "월별 감염자 수의 변화를 알 수 있다.",
+          "노로바이러스 감염 증상을 구별할 수 있다.",
+          "식품을 가열해야 하는 시간을 확인할 수 있다."
         ],
         "answer": 0,
-        "explanation": "위험한 위치를 직관적으로 찾아 피할 수 있다는 점이 핵심입니다.",
-        "hint": "글의 목적과 자료가 보여 주는 정보를 연결해 보세요."
+        "explanation": "손 씻는 방법을 시각적으로 보여 주어 예방 행동을 따라 하기 쉽다.",
+        "hint": "자료에 실제로 담긴 정보가 기사 내용을 어떻게 이해하게 하는지 생각해 보세요."
       }
     },
     {
-      "title": "우리 동네 미세먼지",
-      "body": "계절별 미세먼지 농도를 분석하여 환기가 필요한 시기를 판단하려 한다.",
+      "title": "노로바이러스에 걸리면 어떤 증상이 나타날까?",
+      "body": "노로바이러스 감염 때 나타날 수 있는 증상과 대처를 안내하는 기사입니다.",
       "select": {
         "prompt": "이 기사에 가장 적합한 자료는?",
         "choices": [
           {
-            "title": "봄 48, 여름 22, 가을 31, 겨울 44 µg/m³",
-            "kind": "graph",
-            "source": "수업용 가상 조사 자료",
-            "unit": "명/개/시간 등 문항 참고",
-            "period": "예시 기간",
-            "image": ""
-          },
-          {
-            "title": "푸른 하늘 사진 한 장",
+            "title": "노로바이러스 주요 증상 안내 자료",
             "kind": "photo",
-            "source": "수업용 예시 사진",
-            "unit": "",
+            "source": "노로바이러스 학습 자료",
             "period": "",
-            "image": ""
+            "unit": "",
+            "image": "./assets/article-choices/answer-4.jpg"
           },
           {
-            "title": "먼지 캐릭터 그림",
-            "kind": "table",
-            "source": "수업용 예시 자료",
-            "unit": "",
+            "title": "오답 사진 자료 8",
+            "kind": "photo",
+            "source": "노로바이러스 관련 이미지",
             "period": "",
-            "image": ""
+            "unit": "",
+            "image": "./assets/article-choices/distractor-08.jpg"
           },
           {
-            "title": "교실 자리 배치표",
-            "kind": "illustration",
-            "source": "수업용 삽화",
-            "unit": "",
+            "title": "오답 사진 자료 7",
+            "kind": "photo",
+            "source": "노로바이러스 관련 이미지",
             "period": "",
-            "image": ""
+            "unit": "",
+            "image": "./assets/article-choices/distractor-07.jpg"
+          },
+          {
+            "title": "다른 문제의 정답 자료 5",
+            "kind": "photo",
+            "source": "노로바이러스 학습 자료",
+            "period": "",
+            "unit": "",
+            "image": "./assets/article-choices/answer-5.jpg"
           }
         ],
         "answer": 0,
-        "explanation": "계절별 미세먼지 평균 농도 그래프이므로 글의 목적에 맞습니다.",
-        "hint": "본문에서 비교하거나 확인하려는 정보를 찾으세요."
+        "explanation": "노로바이러스 주요 증상 안내 자료이므로 기사 주제에 맞는 자료입니다.",
+        "hint": "기사에서 다루는 내용과 각 자료에 담긴 정보를 비교해 보세요."
       },
       "effect": {
-        "prompt": "선택한 자료의 효과로 가장 적절한 것은?",
+        "prompt": "이 자료가 기사에 주는 효과로 가장 적절한 것은?",
         "choices": [
-          "계절에 따른 농도 차이를 비교할 수 있다",
-          "기사의 내용과 관계없는 장식만 늘어난다",
-          "글에 없는 사실을 자동으로 증명한다",
-          "자료의 출처를 확인하지 않아도 된다"
+          "주요 증상을 한눈에 살펴보고 감염 여부와 대처 방법을 생각할 수 있다.",
+          "월별 발생 추이를 비교할 수 있다.",
+          "손 씻는 순서를 확인할 수 있다.",
+          "식품을 안전하게 가열하는 방법을 알 수 있다."
         ],
         "answer": 0,
-        "explanation": "계절에 따른 농도 차이를 비교할 수 있다는 점이 핵심입니다.",
-        "hint": "글의 목적과 자료가 보여 주는 정보를 연결해 보세요."
+        "explanation": "주요 증상을 한눈에 살펴보고 감염 여부와 대처 방법을 생각할 수 있다.",
+        "hint": "자료에 실제로 담긴 정보가 기사 내용을 어떻게 이해하게 하는지 생각해 보세요."
       }
     },
     {
-      "title": "도서관 이용 시간 바꾸기",
-      "body": "점심시간과 방과 후 도서관 이용자 수를 조사해 운영 시간을 조정하려 한다.",
+      "title": "노로바이러스를 줄이는 안전한 조리 방법",
+      "body": "노로바이러스 예방을 위한 식품 가열 방법을 안내하는 기사입니다.",
       "select": {
         "prompt": "이 기사에 가장 적합한 자료는?",
         "choices": [
           {
-            "title": "점심 85명, 방과 후 42명, 아침 15명",
-            "kind": "table",
-            "source": "수업용 가상 조사 자료",
-            "unit": "명/개/시간 등 문항 참고",
-            "period": "예시 기간",
-            "image": ""
-          },
-          {
-            "title": "책장 사진",
+            "title": "오답 사진 자료 9",
             "kind": "photo",
-            "source": "수업용 예시 사진",
-            "unit": "",
+            "source": "노로바이러스 관련 이미지",
             "period": "",
-            "image": ""
+            "unit": "",
+            "image": "./assets/article-choices/distractor-09.jpg"
           },
           {
-            "title": "독서 명언 포스터",
-            "kind": "table",
-            "source": "수업용 예시 자료",
-            "unit": "",
+            "title": "다른 문제의 정답 자료 6",
+            "kind": "photo",
+            "source": "노로바이러스 학습 자료",
             "period": "",
-            "image": ""
+            "unit": "",
+            "image": "./assets/article-choices/answer-6.jpg"
           },
           {
-            "title": "책 표지 그림",
-            "kind": "illustration",
-            "source": "수업용 삽화",
-            "unit": "",
+            "title": "오답 사진 자료 10",
+            "kind": "photo",
+            "source": "노로바이러스 관련 이미지",
             "period": "",
-            "image": ""
+            "unit": "",
+            "image": "./assets/article-choices/distractor-10.jpg"
+          },
+          {
+            "title": "노로바이러스 사멸을 위한 가열 방법 자료",
+            "kind": "photo",
+            "source": "노로바이러스 학습 자료",
+            "period": "",
+            "unit": "",
+            "image": "./assets/article-choices/answer-5.jpg"
           }
         ],
-        "answer": 0,
-        "explanation": "시간대별 이용자 수 표이므로 글의 목적에 맞습니다.",
-        "hint": "본문에서 비교하거나 확인하려는 정보를 찾으세요."
+        "answer": 3,
+        "explanation": "노로바이러스 사멸을 위한 가열 방법 자료이므로 기사 주제에 맞는 자료입니다.",
+        "hint": "기사에서 다루는 내용과 각 자료에 담긴 정보를 비교해 보세요."
       },
       "effect": {
-        "prompt": "선택한 자료의 효과로 가장 적절한 것은?",
+        "prompt": "이 자료가 기사에 주는 효과로 가장 적절한 것은?",
         "choices": [
-          "혼잡한 시간대를 수치로 정확히 비교할 수 있다",
-          "기사의 내용과 관계없는 장식만 늘어난다",
-          "글에 없는 사실을 자동으로 증명한다",
-          "자료의 출처를 확인하지 않아도 된다"
+          "필요한 가열 온도와 시간을 확인해 식품을 안전하게 조리하는 데 도움이 된다.",
+          "감염자의 증상을 비교할 수 있다.",
+          "가정 내 감염을 막는 방법을 알 수 있다.",
+          "월별 발생 건수의 변화를 알 수 있다."
         ],
         "answer": 0,
-        "explanation": "혼잡한 시간대를 수치로 정확히 비교할 수 있다는 점이 핵심입니다.",
-        "hint": "글의 목적과 자료가 보여 주는 정보를 연결해 보세요."
+        "explanation": "필요한 가열 온도와 시간을 확인해 식품을 안전하게 조리하는 데 도움이 된다.",
+        "hint": "자료에 실제로 담긴 정보가 기사 내용을 어떻게 이해하게 하는지 생각해 보세요."
       }
     },
     {
-      "title": "플라스틱 줄이기 한 달",
-      "body": "텀블러 사용 캠페인 전후의 일회용 컵 사용량을 비교해 결과를 알리려 한다.",
+      "title": "가족 중 노로바이러스 환자가 생기면?",
+      "body": "가족 구성원이 감염되었을 때 가정 내 전파를 줄이는 방법을 안내하는 기사입니다.",
       "select": {
         "prompt": "이 기사에 가장 적합한 자료는?",
         "choices": [
           {
-            "title": "전 1,200개 → 후 620개 / 한 달, 학생회 조사",
-            "kind": "graph",
-            "source": "수업용 가상 조사 자료",
-            "unit": "명/개/시간 등 문항 참고",
-            "period": "예시 기간",
-            "image": ""
-          },
-          {
-            "title": "텀블러 상품 사진",
+            "title": "다른 문제의 정답 자료 1",
             "kind": "photo",
-            "source": "수업용 예시 사진",
-            "unit": "",
+            "source": "노로바이러스 학습 자료",
             "period": "",
-            "image": ""
+            "unit": "",
+            "image": "./assets/article-choices/answer-1.jpg"
           },
           {
-            "title": "학교 축제 일정표",
-            "kind": "table",
-            "source": "수업용 예시 자료",
-            "unit": "",
+            "title": "가족 중 감염자 발생 시 대처 안내 자료",
+            "kind": "photo",
+            "source": "노로바이러스 학습 자료",
             "period": "",
-            "image": ""
+            "unit": "",
+            "image": "./assets/article-choices/answer-6.jpg"
           },
           {
-            "title": "환경 마스코트 그림",
-            "kind": "illustration",
-            "source": "수업용 삽화",
-            "unit": "",
+            "title": "오답 사진 자료 11",
+            "kind": "photo",
+            "source": "노로바이러스 관련 이미지",
             "period": "",
-            "image": ""
+            "unit": "",
+            "image": "./assets/article-choices/distractor-11.jpg"
+          },
+          {
+            "title": "오답 사진 자료 12",
+            "kind": "photo",
+            "source": "노로바이러스 관련 이미지",
+            "period": "",
+            "unit": "",
+            "image": "./assets/article-choices/distractor-12.jpg"
           }
         ],
-        "answer": 0,
-        "explanation": "캠페인 전후 컵 사용량 비교 도표이므로 글의 목적에 맞습니다.",
-        "hint": "본문에서 비교하거나 확인하려는 정보를 찾으세요."
+        "answer": 1,
+        "explanation": "가족 중 감염자 발생 시 대처 안내 자료이므로 기사 주제에 맞는 자료입니다.",
+        "hint": "기사에서 다루는 내용과 각 자료에 담긴 정보를 비교해 보세요."
       },
       "effect": {
-        "prompt": "선택한 자료의 효과로 가장 적절한 것은?",
+        "prompt": "이 자료가 기사에 주는 효과로 가장 적절한 것은?",
         "choices": [
-          "캠페인 효과를 전후 수치로 쉽게 확인할 수 있다",
-          "기사의 내용과 관계없는 장식만 늘어난다",
-          "글에 없는 사실을 자동으로 증명한다",
-          "자료의 출처를 확인하지 않아도 된다"
+          "가정에서 감염 확산을 막기 위해 필요한 행동을 확인할 수 있다.",
+          "노로바이러스 발생이 많은 달을 비교할 수 있다.",
+          "식품 가열 온도와 시간을 확인할 수 있다.",
+          "감염 증상의 종류를 살펴볼 수 있다."
         ],
         "answer": 0,
-        "explanation": "캠페인 효과를 전후 수치로 쉽게 확인할 수 있다는 점이 핵심입니다.",
-        "hint": "글의 목적과 자료가 보여 주는 정보를 연결해 보세요."
+        "explanation": "가정에서 감염 확산을 막기 위해 필요한 행동을 확인할 수 있다.",
+        "hint": "자료에 실제로 담긴 정보가 기사 내용을 어떻게 이해하게 하는지 생각해 보세요."
       }
     }
   ],
