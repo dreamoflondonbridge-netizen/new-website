@@ -198,3 +198,5 @@ h1,h2,h3{color:#f0f5ff}.muted,.stat-card small{color:#aebcda}footer{color:#9aa9c
 .wheel-label small{display:block;margin-top:2px;font:900 9px/1 Arial,sans-serif;opacity:.78}
 
 .wheel-label{width:44px;margin-left:-22px;font-size:10px;line-height:1.05}
+
+.view-claim-confirm .big-number{font-size:clamp(38px,8vw,68px);line-height:1.1;white-space:nowrap}.multiplier-applied{width:max-content;max-width:100%;margin:4px auto 12px;padding:7px 14px;border:1px solid #7d91d0;border-radius:999px;background:linear-gradient(100deg,#263a63,#35316b);color:#e6eaff;font-size:clamp(14px,3vw,19px);font-weight:900}
